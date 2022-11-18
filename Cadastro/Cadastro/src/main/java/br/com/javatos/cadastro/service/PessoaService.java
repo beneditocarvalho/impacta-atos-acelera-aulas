@@ -26,7 +26,15 @@ public class PessoaService {
         return pessoaRepository.findById(id).orElse(null);
     }
 
+    public Pessoa buscarPorCpf(String cpf) {
+        return pessoaRepository.findByCpf(cpf).orElse(null);
+    }
+
     public void apagar(Pessoa pessoa){
         pessoaRepository.delete(pessoa);
+    }
+
+    public void apagarPorCpf(String cpf){
+        pessoaRepository.deleteByCpf(cpf);
     }
 }
