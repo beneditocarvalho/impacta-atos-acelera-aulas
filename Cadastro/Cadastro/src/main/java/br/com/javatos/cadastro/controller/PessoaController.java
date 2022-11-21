@@ -5,6 +5,7 @@ import br.com.javatos.cadastro.service.PessoaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +38,7 @@ public class PessoaController {
     }
 
     @GetMapping("/cpf/{cpf}")
-    public Pessoa buscarPorCpf(@PathVariable String cpf){
+    public ResponseEntity<Pessoa> buscar(@PathVariable String cpf) {
         return pessoaService.buscarPorCpf(cpf);
     }
 
