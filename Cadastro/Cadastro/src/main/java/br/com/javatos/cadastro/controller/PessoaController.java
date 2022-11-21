@@ -3,26 +3,32 @@ package br.com.javatos.cadastro.controller;
 import br.com.javatos.cadastro.model.Pessoa;
 import br.com.javatos.cadastro.service.PessoaService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/pessoa")
+@Slf4j
 public class PessoaController {
 
     private final PessoaService pessoaService;
 
     @PostMapping
-    public Pessoa salvar (@RequestBody Pessoa pessoa) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Pessoa salvar (@Valid @RequestBody Pessoa pessoa) {
+        log.info("Iniciando o cadastro de uma pessoa {}", pessoa);
         return pessoaService.salvar(pessoa);
     }
 
     @GetMapping
-    public List<Pessoa> buscarTodos(){
-        return pessoaService.bucarTodos();
+    public List<Pessoa> buscarTodos() {
+        return pessoaService.buscarTodos();
     }
 
     @GetMapping("/{id}")
@@ -36,8 +42,9 @@ public class PessoaController {
     }
 
     @DeleteMapping("/{id}")
-    public void apagar(Pessoa pessoa){
-        pessoaService.apagar(pessoa);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void apagar(@PathVariable Long id){
+        pessoaService.apagar(id);
     }
 
     @DeleteMapping("/cpf/{cpf}")

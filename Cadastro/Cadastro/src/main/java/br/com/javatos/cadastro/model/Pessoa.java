@@ -18,7 +18,7 @@ import java.util.UUID;
 public class Pessoa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "v_nome_completo", length = 300, nullable = false)
@@ -26,7 +26,7 @@ public class Pessoa {
     @Size(min = 2, max = 300, message = "Nome inválido")
     private String nome;
 
-    @Column(name = "v_email", length = 200, nullable = false)
+    @Column(name = "v_email", length = 200, nullable = false, unique = true)
     @Email(message = "E-mail informado inválido")
     private String email;
 
@@ -39,7 +39,7 @@ public class Pessoa {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", locale = "pt-BR", timezone = "Brazil/East")
     private Date dataDeNascimento;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, updatable = false)
     private String matricula = UUID.randomUUID().toString();
 
 }

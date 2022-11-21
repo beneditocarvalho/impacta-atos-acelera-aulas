@@ -10,9 +10,13 @@ import java.util.Optional;
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
     Optional<Pessoa> findByCpf(String cpf);
 
+    void deleteByCpf(String cpf);
+
+
+    Optional<Pessoa> findByEmail(String email);
+
 //    List<Pessoa> findByNomeContaining(String nome);
 //    @Query(" select t from tb_Pessoa t where upper(t.nome) like upper(:nome)")
-//    List<Pessoa> findByNome(String nome);
 
-    void deleteByCpf(String cpf);
+//    List<Pessoa> findByNome(String nome);
 }
