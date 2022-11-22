@@ -1,7 +1,6 @@
 package br.com.javatos.cadastro.controller;
 
 import br.com.javatos.cadastro.model.Pessoa;
-import br.com.javatos.cadastro.repository.PessoaRepository;
 import br.com.javatos.cadastro.service.PessoaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +18,6 @@ import java.util.List;
 public class PessoaController {
 
     private final PessoaService pessoaService;
-    private final PessoaRepository pessoaRepository;
 
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -46,6 +44,7 @@ public class PessoaController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void apagar(@PathVariable Long id){
+        log.warn("Excluindo uma pessoa");
         pessoaService.apagar(id);
     }
 
