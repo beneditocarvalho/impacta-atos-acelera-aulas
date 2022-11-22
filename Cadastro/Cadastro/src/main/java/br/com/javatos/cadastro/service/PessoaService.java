@@ -56,6 +56,7 @@ public class PessoaService {
     public void apagar(Long id){
         try {
             pessoaRepository.deleteById(id);
+            log.warn("Excluindo uma pessoa");
         } catch (RuntimeException e) {
             throw new PessoaExceptionNotFound("ID não localizado");
         }
@@ -67,6 +68,7 @@ public class PessoaService {
             throw new PessoaExceptionNotFound("Não foi possível a exclusão por CPF");
         }
             pessoaRepository.deleteByCpf(cpf);
+            log.warn("Excluindo uma pessoa");
     }
 
 

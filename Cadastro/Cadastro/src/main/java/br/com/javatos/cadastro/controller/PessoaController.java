@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -44,13 +45,13 @@ public class PessoaController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void apagar(@PathVariable Long id){
-        log.warn("Excluindo uma pessoa");
         pessoaService.apagar(id);
     }
 
     @DeleteMapping("/cpf/{cpf}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ResponseBody
+    @Transactional
     public void apagarPorCpf(@PathVariable String cpf){
         pessoaService.apagarPorCpf(cpf);
     }
