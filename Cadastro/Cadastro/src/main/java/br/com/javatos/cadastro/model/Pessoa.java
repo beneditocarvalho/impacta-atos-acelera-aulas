@@ -1,7 +1,9 @@
 package br.com.javatos.cadastro.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -41,5 +43,11 @@ public class Pessoa {
 
     @Column(nullable = false, unique = true, updatable = false)
     private String matricula = UUID.randomUUID().toString();
+
+    @CreationTimestamp
+    private Date dataDoCadastro;
+
+    @Embedded
+    Endereco endereco;
 
 }

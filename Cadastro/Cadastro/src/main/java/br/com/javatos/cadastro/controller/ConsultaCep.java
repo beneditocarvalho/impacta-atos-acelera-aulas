@@ -8,17 +8,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/cep")
 public class ConsultaCep {
 
     @GetMapping("/{cep}")
     public ResponseEntity<Endereco> getCep (@PathVariable String cep){
+
+        Endereco endereco = buscarCep(cep);
+        return ResponseEntity.ok(endereco);
+    }
+
+    @GetMapping
+    public List<Endereco> getListaDePessoa (){
+
+        String url = "http://localhost:8080/pessoa";
+
+        List responseObject = new RestTemplate().getForObject(url, List.class);
+
+        return responseObject;
+    }
+
+    public Endereco buscarCep(String cep) {
         String url = "https://viacep.com.br/ws/" + cep + "/json/";
-
-        ResponseEntity<Endereco> responseEntity = new RestTemplate().getForEntity(url, Endereco.class);
-        Endereco responseObject = new RestTemplate().getForObject(url, Endereco.class);
-
-        return responseEntity;
+        return new RestTemplate().getForObject(url, Endereco.class);
     }
 }
