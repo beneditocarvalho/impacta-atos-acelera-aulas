@@ -1,6 +1,7 @@
 package br.com.javatos.cadastro.exception.config;
 
-import br.com.javatos.cadastro.exception.config.erros.PessoaExceptionNotFound;
+import br.com.javatos.cadastro.exception.erros.DuplicacaoCadastroException;
+import br.com.javatos.cadastro.exception.erros.PessoaExceptionNotFound;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
