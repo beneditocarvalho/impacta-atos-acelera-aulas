@@ -1,12 +1,12 @@
 package br.com.javatos.cadastro.controller;
 
 import br.com.javatos.cadastro.model.Pessoa;
+import br.com.javatos.cadastro.repository.PessoaRepository;
 import br.com.javatos.cadastro.service.PessoaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,11 +19,12 @@ import java.util.List;
 public class PessoaController {
 
     private final PessoaService pessoaService;
+    private final PessoaRepository pessoaRepository;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Pessoa salvar (@Valid @RequestBody Pessoa pessoa) {
-        log.info("Iniciando o cadastro de uma pessoa {}", pessoa);
+        log.info("iniciando o cadastro de uma pessoa: {}", pessoa);
         return pessoaService.salvar(pessoa);
     }
 
@@ -49,7 +50,8 @@ public class PessoaController {
     }
 
     @DeleteMapping("/cpf/{cpf}")
-    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseBody
     public void apagarPorCpf(@PathVariable String cpf){
         pessoaService.apagarPorCpf(cpf);
     }
