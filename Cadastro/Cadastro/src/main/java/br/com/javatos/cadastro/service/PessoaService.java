@@ -1,7 +1,7 @@
 package br.com.javatos.cadastro.service;
 
-import br.com.javatos.cadastro.exception.erros.DuplicacaoCadastroException;
-import br.com.javatos.cadastro.exception.erros.PessoaExceptionNotFound;
+import br.com.javatos.cadastro.exception.config.DuplicacaoCadastroException;
+import br.com.javatos.cadastro.exception.config.erros.PessoaExceptionNotFound;
 import br.com.javatos.cadastro.model.Pessoa;
 import br.com.javatos.cadastro.repository.PessoaRepository;
 import lombok.RequiredArgsConstructor;

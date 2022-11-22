@@ -1,4 +1,4 @@
-package br.com.javatos.cadastro.exception.erros;
+package br.com.javatos.cadastro.exception.config.erros;
 
 public class PessoaExceptionNotFound extends RuntimeException{
 
