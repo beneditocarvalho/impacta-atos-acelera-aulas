@@ -27,4 +27,9 @@ public class AlunoController {
     public List<Aluno> listarTodosS( ) {
         return alunoService.listarTodos();
     }
+
+    @PutMapping
+    public Aluno alterar(Aluno aluno){
+        return alunoService.alterar(aluno);
+    }
 }
