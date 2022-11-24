@@ -1,17 +1,18 @@
 package br.com.javatos.cursos.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-
-import javax.persistence.Entity;
 
 @Data
 public class Endereco {
-
-    private String rua;
-    private Integer numero;
-    private String complemento;
-    private String cep;
-    private String uf;
-    private String cidade;
+    public String cep;
+    @JsonProperty(value = "logradouro")
+    public String rua;
+    public String complemento;
+    public String bairro;
+    //localidade
+    @JsonProperty(value = "localidade")
+    public String cidade;
+    public String uf;
 
 }
