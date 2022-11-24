@@ -2,7 +2,10 @@ package br.com.javatos.cursos.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 
 @Data
@@ -16,14 +19,7 @@ public class Aluno {
     private String cpf;
     private String email;
     private String matricula;
-
-    @Embedded
     private Endereco endereco;
-
-    @ManyToMany
     private List<Curso> cursos;
-
-    @ManyToMany
     private List<Nota> notas;
-
 }

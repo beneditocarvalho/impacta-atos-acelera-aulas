@@ -2,7 +2,10 @@ package br.com.javatos.cursos.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 
 @Data
@@ -14,8 +17,6 @@ public class Curso {
     private long id;
     private String nome;
     private String codigo;
-
-    @ManyToMany
     private List<Disciplina> disciplinas;
 
 }
