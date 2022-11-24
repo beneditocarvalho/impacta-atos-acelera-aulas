@@ -4,13 +4,14 @@ import br.com.javatos.cursos.model.Aluno;
 import br.com.javatos.cursos.model.Endereco;
 import br.com.javatos.cursos.repository.AlunoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AlunoService {
 
     private final AlunoRepository alunoRepository;

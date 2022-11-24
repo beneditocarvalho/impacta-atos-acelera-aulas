@@ -2,10 +2,7 @@ package br.com.javatos.cursos.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,11 +13,19 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String nome;
     private String cpf;
     private String email;
     private String matricula;
+
+    @Embedded
     private Endereco endereco;
+
+    @ManyToMany
     private List<Curso> cursos = new ArrayList<>();
+
+    @ManyToMany
     private List<Nota> notas = new ArrayList<>();
+
 }

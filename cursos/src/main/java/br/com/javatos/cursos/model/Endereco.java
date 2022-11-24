@@ -5,14 +5,15 @@ import lombok.Data;
 
 @Data
 public class Endereco {
-    public String cep;
-    @JsonProperty(value = "logradouro")
-    public String rua;
-    public String complemento;
-    public String bairro;
-    //localidade
+    
+    @JsonProperty("logradouro")
+    private String rua;
+    private Integer numero;
+    private String complemento;
+    private String cep;
+    private String uf;
+
     @JsonProperty(value = "localidade")
-    public String cidade;
-    public String uf;
+    private String cidade;
 
 }
