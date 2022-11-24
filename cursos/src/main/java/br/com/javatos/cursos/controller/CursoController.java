@@ -24,7 +24,7 @@ public class CursoController {
     }
 
     @GetMapping
-    public List<Curso> listarTodosS( ) {
+    public List<Curso> listarTodos( ) {
         return cursoService.listarTodos();
     }
 }
