@@ -29,10 +29,11 @@ public class SwaggerConfig {
     public Docket api() {
 
         List<ResponseMessage> listMessage = new ArrayList();
-        listMessage.add(new ResponseMessageBuilder().code(500).message("Falha no BD").build());
+        listMessage.add(new ResponseMessageBuilder().code(200).message("sucesso !!!").build());
         listMessage.add(new ResponseMessageBuilder().code(400).message("Dados incorretos").build());
         listMessage.add(new ResponseMessageBuilder().code(401).message("Sem permissão").build());
         listMessage.add(new ResponseMessageBuilder().code(403).message("Não pode acessar esse recurso").build());
+        listMessage.add(new ResponseMessageBuilder().code(500).message("Falha no BD").build());
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
@@ -40,7 +41,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())
-                .useDefaultResponseMessages(true)
+                .useDefaultResponseMessages(false)
                 .globalResponseMessage(RequestMethod.GET, listMessage)
                 .globalResponseMessage(RequestMethod.POST, listMessage)
                 .globalResponseMessage(RequestMethod.PUT, listMessage)

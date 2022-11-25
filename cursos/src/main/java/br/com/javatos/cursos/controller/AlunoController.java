@@ -26,8 +26,8 @@ public class AlunoController {
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Listar todos os alunos")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "sucesso"),
-            @ApiResponse(code = 201, message = "criado"),
+            @ApiResponse(code = 200, message = "Sucesso!"),
+            @ApiResponse(code = 201, message = "Criado!"),
             @ApiResponse(code = 401, message = "vc não tem autorização"),
             @ApiResponse(code = 403, message = "vc não pode ver o que tem aqui"),
             @ApiResponse(code = 404, message = "não tem nada aqui"),
